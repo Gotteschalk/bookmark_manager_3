@@ -70,6 +70,27 @@
         1,
         null
       ],
+      "/Users/thomas_ross100/Projects/skills-workshops/week-4/bookmark_manager/spec/databaseconnection_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/thomas_ross100/Projects/skills-workshops/week-4/bookmark_manager/spec/feature/add_bookmark_spec.rb": [
         1,
         1,
@@ -155,6 +176,6 @@
         null
       ]
     },
-    "timestamp": 1568311006
+    "timestamp": 1568384759
   }
 }
