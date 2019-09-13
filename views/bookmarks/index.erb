@@ -14,6 +14,7 @@
   <% end %>
 </ul>
 
+<%= flash[:notice] %>
 <form action='/add'>
-  <button type='submit'>Add Bookmark</button>
+  <button type='submit' name="add">Add Bookmark</button>
 </form>

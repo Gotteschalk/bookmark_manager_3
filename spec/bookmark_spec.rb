@@ -38,11 +38,10 @@ describe Bookmark do
   describe '.update' do
     it 'updates a bookmark on the database' do
     bookmark = Bookmark.add('Microsoft Homepage', 'http://www.microsoft.com')
-    updated_bookmark = Bookmark.update(bookmark.id, 'The Economist', 'www.economist.com')
+    updated_bookmark = Bookmark.update(bookmark.id, 'The Economist', 'http://www.economist.com')
     expect(Bookmark.all.length).to eq 1
-    p updated_bookmark
     expect(updated_bookmark.title).to eq 'The Economist'
-    expect(updated_bookmark.url).to eq 'www.economist.com'
+    expect(updated_bookmark.url).to eq 'http://www.economist.com'
     end
   end
 
@@ -54,6 +53,16 @@ describe Bookmark do
       expect(result.id).to eq(bookmark.id)
       expect(result.title).to eq(bookmark.title)
       expect(result.url).to eq(bookmark.url)
+    end
+  end
+
+  describe '.is_url?' do
+    it "returns false for a valid url" do
+      expect(Bookmark.is_url?("not a url")).to be_falsey
+    end
+
+    it "returns true for an invalid url" do
+      expect(Bookmark.is_url?("http://www.google.com")).to be_truthy
     end
   end
 end

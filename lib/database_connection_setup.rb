@@ -1,4 +1,4 @@
-require 'databaseconnection'
+require_relative './databaseconnection'
 
 if ENV['ENVIRONMENT'] == 'test'
   DatabaseConnection.setup('bookmark_manager_test')

@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require './lib/bookmark.rb'
 require './lib/database_connection_setup'
 
 # BookmarkManager inherits from Sinatra/Base
 class BookmarkManager < Sinatra::Base
   enable :sessions, :method_override
+  register Sinatra::Flash
 
   get '/' do
     erb :index
@@ -22,7 +24,9 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/confirmation' do
-    Bookmark.add(params[:title], params[:url])
+
+    flash[:notice] = "URL must be valid" unless Bookmark.add(params[:title], params[:url])
+
     redirect '/bookmarks'
   end
 
@@ -38,7 +42,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   patch '/bookmarks/:id' do
-    Bookmark.update(params['id'], params['title'], params['url'])
+    flash[:notice] = "URL must be valid" unless Bookmark.update(params['id'], params['title'], params['url'])
+
     redirect '/bookmarks'
   end
 end
